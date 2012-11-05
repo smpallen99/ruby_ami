@@ -86,7 +86,7 @@ module RubyAMI
             pass_event message
             start_writing_actions
           else
-            raise StandardError, "Got an unexpected event on actions socket! This AMI command may have a multi-message response. Try making Adhearsion treat it as causal action #{message.inspect}"
+            raise StandardError, "Got an unexpected event on actions socket! This AMI command may have a multi-message response. Try making Adhearsion treat it as causal action #{message.inspect}" unless message.name.downcase == 'dbgetcomplete'
           end
         end
       when Response, Error
